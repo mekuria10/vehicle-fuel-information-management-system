@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Driver</title>
+        <link rel="stylesheet" href="dbu.css">
+    </head>
+    <body>
+        <div class="car">
+       <img src="bus A112.jfif" alt="isuzu pickup" > 
+
+      
+    </div>
+    <h1>welcome! dbu drivers</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <p>if you have a fuel request 
+    
+
+
+
+
+
+
+    <h1>add task</h1>
+    <input type="text" id="taskInput" placeholder="Enter required fuel(liter)" />
+    <button onclick="addTask()">send</button>
+
+
+    <script>
+        function addTask() {
+            const taskInput = document.getElementById('taskInput');
+            const task = taskInput.value.trim();
+            if (task) {
+                let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+                tasks.push(task);
+                localStorage.setItem('tasks', JSON.stringify(tasks));
+                taskInput.value = '';
+                alert('Task added successfully!');
+            } else {
+                alert('Please enter a task.');
+            }
+        }
+    </script>
+</body>
+</html>

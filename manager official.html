@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>manager official</title>
+        <link rel="stylesheet" href="dbu.css">
+    </head>
+    <body>
+        
+        
+        <h1>Your Tasks</h1>
+        <ul id="taskList"> </ul>
+    
+  
+    
+        <script>
+            function loadTasks() {
+                let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+                const taskList = document.getElementById('taskList');
+                taskList.innerHTML = '';
+    
+                tasks.forEach((task, index) => {
+                    const li = document.createElement('li');
+                    const br = document.createElement('br');
+                    li.textContent = task;
+                    const removeButton = document.createElement('button');
+                    removeButton.textContent = 'Remove';
+                    removeButton.onclick = () => removeTask(index);
+                    li.appendChild(removeButton);
+                    li.appendChild(br);
+                    taskList.appendChild(li);
+                });
+            }
+    
+            function removeTask(index) {
+                let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+                tasks.splice(index, 1);
+                localStorage.setItem('tasks', JSON.stringify(tasks));
+                loadTasks();
+            }
+    
+            window.onload = loadTasks;
+        </script>
+    </body>
+</html>
